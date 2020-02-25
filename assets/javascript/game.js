@@ -1,53 +1,59 @@
-var img = document.createElement('img');
-type = "text/javascript"
-src = "./assets/images/blue.png" >
+$(document).ready(function () {});
 
-
-
-    var targetNumber = 53;
-var counter = 0;
-var numberOptions = [10, 5, 3, 7];
-var increment = numberOptions[Math.round(Math.random())];
+var targetNumber = 53;
 
 $("#crystals-to-collect").text(targetNumber);
 
-/* Buttons */
-$(".blue").on("click", function () {
-    counter += increment;
-    alert("Your new score is: " + counter + " crystals!");
-    if (counter === targetNumber) {
-        alert("You win!");
-    } else if (counter >= targetNumber) {
-        alert("You lose!!");
-    }
-});
+var counter = 0;
 
-$(".green").on("click", function () {
-    counter += 10;
-    alert("Your new score is: " + counter + " crystals!");
-    if (counter === targetNumber) {
-        alert("You win!");
-    } else if (counter >= targetNumber) {
-        alert("You lose!!");
-    }
-});
+// Now for the hard part. Creating multiple crystals each with their own unique number value.
 
-$(".orange").on("click", function () {
-    counter += 10;
-    alert("Your new score is: " + counter + " crystals!");
-    if (counter === targetNumber) {
-        alert("You win!");
-    } else if (counter >= targetNumber) {
-        alert("You lose!!");
-    }
-});
+// We begin by expanding our array to include four options.
+var numberOptions = [10, 5, 3, 7];
 
-$(".pink").on("click", function () {
-    counter += 10;
-    alert("Your new score is: " + counter + " crystals!");
+// Next we create a for loop to create crystals for every numberOption.
+for (var i = 0; i < numberOptions.length; i++) {
+
+    // For each iteration, we will create an imageCrystal
+    var imageCrystal = $("<img>");
+
+    // First each crystal will be given the class ".crystalPic".
+    // This will allow the CSS to take effect.
+    imageCrystal.addClass("crystalPic");
+
+    // Each imageCrystal will be given a src link to the crystalPic
+    imageCrystal.attr("src",
+        "https://raw.githubusercontent.com/jenkruk/unit-4-game/master/assets/images/blue.png");
+
+    // Each imageCrystal will be given a data attribute called data-crystalValue.
+    // This data attribute will be set equal to the array value.
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+    $("#crystals").append(imageCrystal);
+}
+
+// This time, our click event applies to every single crystal on the page. Not just one.
+$(".crystalPic").on("click", function () {
+
+    // Determining the crystal's value requires us to extract the value from the data attribute.
+    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    // We then add the crystalValue to the user's "counter" which is a global variable.
+    // Every click, from every crystal adds to the global counter.
+    counter += crystalValue;
+
+    // All of the same game win-lose logic applies. So the rest remains unchanged.
+    alert("New score: " + counter);
+
     if (counter === targetNumber) {
         alert("You win!");
     } else if (counter >= targetNumber) {
         alert("You lose!!");
     }
+
 });
