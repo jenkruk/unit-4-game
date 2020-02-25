@@ -1,59 +1,97 @@
-$(document).ready(function () {});
+$(document).ready(function () {
 
-var targetNumber = 53;
+    var userTotal = 0;
+    var wins = 0;
+    var losses = 0;
 
-$("#crystals-to-collect").text(targetNumber);
+    // Selects a random number between 19 and 120
+    var Random = Math.floor(Math.random() * 101 + 19)
 
-var counter = 0;
+    // Setting up a random number between 1-12 for each crystal between
+    var num1 = Math.floor(Math.random() * 11 + 1)
+    var num2 = Math.floor(Math.random() * 11 + 1)
+    var num3 = Math.floor(Math.random() * 11 + 1)
+    var num4 = Math.floor(Math.random() * 11 + 1)
 
-// Now for the hard part. Creating multiple crystals each with their own unique number value.
+    // Assigning a random number to the randomNumber id in the html doc
+    $('#randomNumber').text(Random);
 
-// We begin by expanding our array to include four options.
-var numberOptions = [10, 5, 3, 7];
+    //  Assigning text to update in html ID's
+    $('#finalTotal').text(userTotal);
+    $('#numberWins').text(wins);
+    $('#numberLosses').text(losses);
 
-// Next we create a for loop to create crystals for every numberOption.
-for (var i = 0; i < numberOptions.length; i++) {
-
-    // For each iteration, we will create an imageCrystal
-    var imageCrystal = $("<img>");
-
-    // First each crystal will be given the class ".crystalPic".
-    // This will allow the CSS to take effect.
-    imageCrystal.addClass("crystalPic");
-
-    // Each imageCrystal will be given a src link to the crystalPic
-    imageCrystal.attr("src",
-        "https://raw.githubusercontent.com/jenkruk/unit-4-game/master/assets/images/blue.png");
-
-    // Each imageCrystal will be given a data attribute called data-crystalValue.
-    // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-
-    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-    $("#crystals").append(imageCrystal);
-}
-
-// This time, our click event applies to every single crystal on the page. Not just one.
-$(".crystalPic").on("click", function () {
-
-    // Determining the crystal's value requires us to extract the value from the data attribute.
-    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
-    var crystalValue = ($(this).attr("data-crystalvalue"));
-    crystalValue = parseInt(crystalValue);
-    // We then add the crystalValue to the user's "counter" which is a global variable.
-    // Every click, from every crystal adds to the global counter.
-    counter += crystalValue;
-
-    // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
-
-    if (counter === targetNumber) {
-        alert("You win!");
-    } else if (counter >= targetNumber) {
-        alert("You lose!!");
+    //resets the game
+    function reset() {
+        Random = Math.floor(Math.random() * 101 + 19);
+        console.log(Random)
+        $('#randomNumber').text(Random);
+        num1 = Math.floor(Math.random() * 11 + 1);
+        num2 = Math.floor(Math.random() * 11 + 1);
+        num3 = Math.floor(Math.random() * 11 + 1);
+        num4 = Math.floor(Math.random() * 11 + 1);
+        userTotal = 0;
+        $('#finalTotal').text(userTotal);
     }
 
+    //adds the wins to the userTotal
+    function won() {
+        alert("You won!");
+        wins++;
+        $('#numberWins').text(wins);
+        reset();
+    }
+    //addes the losses to the userTotal
+    function lost() {
+        alert("You lose!");
+        losses++;
+        $('#numberLosses').text(losses);
+        reset()
+    }
+    //on click event to add to user total
+    $('#one').on('click', function () {
+        userTotal = userTotal + num1;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        //win/lose conditions
+        if (userTotal == Random) {
+            won();
+        } else if (userTotal > Random) {
+            lost();
+        }
+    })
+    $('#two').on('click', function () {
+        userTotal = userTotal + num2;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        //win/lose conditions
+        if (userTotal == Random) {
+            won();
+        } else if (userTotal > Random) {
+            lost();
+        }
+    })
+
+    $('#three').on('click', function () {
+        userTotal = userTotal + num3;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        //win/lose conditions
+        if (userTotal == Random) {
+            won();
+        } else if (userTotal > Random) {
+            lost();
+        }
+    })
+    $('#four').on('click', function () {
+        userTotal = userTotal + num4;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        //win/lose conditions
+        if (userTotal == Random) {
+            won();
+        } else if (userTotal > Random) {
+            lost();
+        }
+    });
 });
