@@ -1,9 +1,6 @@
 body {
-    color: rgb(92, 91, 91) !important;
-    background-image: url("images/background.png");
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-size: cover;
+    color: rgb(104, 104, 104) !important;
+    font-family: 'Raleway' !important;
 }
 
 h1 {
@@ -13,11 +10,13 @@ h1 {
     filter: drop-shadow(-2px 2px 1px gray);
 }
 
-h2,
-h3,
-h4 {
-    font-family: 'Raleway';
+h5 {
+    font-size: 34px !important;
+    color: white;
+    filter: drop-shadow(-2px 2px 1px gray);
 }
+
+
 
 #randomNumber {
     color: #00ba3a;
@@ -86,4 +85,12 @@ h4 {
     40% {
         transform: translate(1px, -1px) rotate(1deg);
     }
+}
+
+.colorStrip {
+    background-color: #df0073;
+}
+
+.colorStripText {
+    height: 68px;
 }
