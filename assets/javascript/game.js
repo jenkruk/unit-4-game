@@ -44,6 +44,7 @@ $(document).ready(function () {
         });
         wins++;
         $('#numberWins').text(wins);
+        yay.play();
         reset();
     }
 
@@ -57,6 +58,7 @@ $(document).ready(function () {
         });
         losses++;
         $('#numberLosses').text(losses);
+        boo.play();
         reset();
     }
 
