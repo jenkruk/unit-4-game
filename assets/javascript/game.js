@@ -44,11 +44,15 @@ $(document).ready(function () {
         });
         wins++;
         $('#numberWins').text(wins);
-        yay.play();
+        $('#yay').fadeIn('fast', function () {
+            setTimeout(function () {
+                yay.play();
+            }, 300);
+        });
         reset();
     }
 
-    //addes the losses to the userTotal
+    //adds the losses to the userTotal
     function lost() {
         $("#results").text("Try Again!");
         $('#results').fadeIn('fast', function () {
@@ -58,7 +62,11 @@ $(document).ready(function () {
         });
         losses++;
         $('#numberLosses').text(losses);
-        boo.play();
+        $('#boo').fadeIn('fast', function () {
+            setTimeout(function () {
+                boo.play();
+            }, 300);
+        });
         reset();
     }
 
@@ -117,4 +125,5 @@ $(document).ready(function () {
         }
         click.play();
     });
+
 });
