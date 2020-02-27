@@ -57,8 +57,9 @@ $(document).ready(function () {
         });
         losses++;
         $('#numberLosses').text(losses);
-        reset()
+        reset();
     }
+
     //blue crystal click function
     $('#one').on('click', function () {
         userTotal = userTotal + num1;
@@ -70,6 +71,7 @@ $(document).ready(function () {
         } else if (userTotal > Random) {
             lost();
         }
+        click.play();
     })
 
     //green crystal click function
@@ -83,6 +85,7 @@ $(document).ready(function () {
         } else if (userTotal > Random) {
             lost();
         }
+        click.play();
     })
 
     //orange crystal click function
@@ -96,6 +99,7 @@ $(document).ready(function () {
         } else if (userTotal > Random) {
             lost();
         }
+        click.play();
     })
 
     //pink crystal click function
@@ -109,5 +113,6 @@ $(document).ready(function () {
         } else if (userTotal > Random) {
             lost();
         }
+        click.play();
     });
 });
