@@ -94,3 +94,47 @@ h5 {
 .colorStripText {
     height: 68px;
 }
+
+@media (min-width: 320px) and (max-width: 679px) {
+
+    body {
+        justify-content: center;
+        min-width: 320px;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    h1 {
+        font-size: 26px !important;
+    }
+
+    h2,
+    h5 {
+        font-size: 18px !important;
+    }
+
+    h3,
+    h4 {
+        font-size: 16px !important;
+    }
+
+    #finalTotal,
+    #numberWins,
+    #randomNumber,
+    #numberLosses {
+        font-size: 24px;
+    }
+
+    .crystalPic {
+        margin: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .crystalPic:active {
+        width: 35px;
+        height: 35px;
+    }
+
+
+}
